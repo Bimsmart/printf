@@ -9,5 +9,11 @@
  */
 int _printf(const char *format, ...)
 {
+	int num;
+	
+	va_list(printme);
+	va_start(printme, format);
 
+
+	va_end(printme);
 }
