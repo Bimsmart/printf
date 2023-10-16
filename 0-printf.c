@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdarg.h>
 
 /**
  * _printf - prints value to the standard output
@@ -16,8 +17,17 @@ int _printf(const char *format, ...)
 		return (0);
 	va_start(printme, format);
 	num = 0;
-	while (format[num])
+	while (*format)
 	{
+		if (num != "%")
+		{
+			write(1, format, 1);
+			format++;
+		}
+		else
+		{
+			format++;
+		}}
 		num++;
 	}
 
