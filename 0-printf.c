@@ -10,10 +10,16 @@
 int _printf(const char *format, ...)
 {
 	int num;
-	
 	va_list(printme);
-	va_start(printme, format);
 
+	if (format == NULL)
+		return (0);
+	va_start(printme, format);
+	num = 0;
+	while (format[num])
+	{
+		num++;
+	}
 
 	va_end(printme);
 }
