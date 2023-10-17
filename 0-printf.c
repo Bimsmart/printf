@@ -14,16 +14,15 @@ int _printf(const char *format, ...)
 
 	va_list(printme);
 	if (format == NULL)
-		return (0);
+		return (-1);
 	va_start(printme, format);
-	while (*format)
+	for (; *format; format++)
 	{
-		if (format != "%")
+		if (format != '%')
 		{
 			write(1, format, 1);
 			num++;
-		}
-		else
+		} else
 		{
 			format++;
 			if (*format == '\0')
@@ -36,6 +35,7 @@ int _printf(const char *format, ...)
 			if (*format == 'c')
 			{
 				char c = va_arg(printme, int);
+
 				write(1, &c, 1);
 				num++;
 			}
@@ -47,7 +47,6 @@ int _printf(const char *format, ...)
 				num += strlen(s);
 			}
 		}
-		format++;
 	}
 	va_end(printme);
 	return (num);
