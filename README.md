@@ -1,2 +1,2 @@
 printf readme
-bimsmart
+bimsmariiit
