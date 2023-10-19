@@ -32,3 +32,15 @@ void print_percent(int *num)
 
 	handle_write(num, &c, 1);
 }
+/**
+ * print_int - print
+ * @types: va_list
+ * @num: integer
+ */
+void print_int(va_list types, int *num)
+{
+	number = va_arg(types, int);
+	len = sprint(buffer, "%d", num);
+	fwrite(buffer, 1, len, stdout);
+	*num += len;
+}

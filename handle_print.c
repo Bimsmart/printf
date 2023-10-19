@@ -14,6 +14,8 @@ void handle_print(const char *fmt, va_list list, int *num)
 		{'c', print_char},
 		{'s', print_string},
 		{'%', print_percent},
+		{'d', print_int},
+		{'i', print_int},
 		{'\0', NULL}
 	};
 	for (i = 0; fmt_types[i].fmt != '\0'; i++)

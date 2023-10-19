@@ -28,5 +28,6 @@ void handle_write(int *n, const char *str, int len);
 void print_char(va_list types, int *num);
 void print_string(va_list types, int *num);
 void print_percent(int *num);
+void print_int(va_list types, int *num);
 
 #endif
