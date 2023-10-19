@@ -40,20 +40,7 @@ int _printf(const char *format, ...)
 			format++;
 			if (*format == '\0')
 				break;
-			if (*format == '%')
-				handle_write(&num, format, 1);
-			if (*format == 'c')
-			{
-				char c = va_arg(printme, int);
-
-				handle_write(&num, &c, 1);
-			}
-			if (*format == 's')
-			{
-				char *s = va_arg(printme, char *);
-
-				handle_write(1, s, strlen(s));
-			}
+			handle_print(format, printme, &num);
 			if (*format == 'i' || *format == 'd')
 			number = va_arg(printme, int);
 			len = sprint(buffer, "%d", num);
