@@ -13,7 +13,6 @@ void handle_print(const char *fmt, va_list list, int *num)
 	fmt_t fmt_types[] = {
 		{'c', print_char},
 		{'s', print_string},
-		{'%', print_percent},
 		{'d', print_int},
 		{'i', print_int},
 		{'\0', NULL}

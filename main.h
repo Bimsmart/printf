@@ -14,7 +14,7 @@ struct fmt
 {
 	char fmt;
 	void (*fn)(va_list, int *);
-}
+};
 /**
  * typedef struct fmt fmt_t - Struct op
  * @fmt: The format.

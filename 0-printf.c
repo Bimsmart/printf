@@ -3,18 +3,6 @@
 #include <string.h>
 #include <stdarg.h>
 /**
- * handle_write - this function hadles write
- * @n: a pointer to no of characters
- * @str: a pointer to a string
- * @len: length of string
- * returns: void
- */
-void handle_write(int *n, char *str, int len)
-{
-	write(1, str, len);
-	*n += len;
-}
-/**
  * _printf - prints value to the standard output
  * @format: string value
  * @...: other argumets
@@ -23,8 +11,7 @@ void handle_write(int *n, char *str, int len)
  */
 int _printf(const char *format, ...)
 {
-	int num = 0, len, number;
-	char buffer[1024];
+	int num = 0;
 
 	va_list(printme);
 	if (format == NULL)
@@ -40,11 +27,9 @@ int _printf(const char *format, ...)
 			format++;
 			if (*format == '\0')
 				break;
+			if (*format == '%')
+				handle_write(&num,format, 1);
 			handle_print(format, printme, &num);
-			if (*format == 'i' || *format == 'd')
-			number = va_arg(printme, int);
-			len = sprint(buffer, "%d", num);
-			fwrite(buffer, 1, len, stdout);
 		}
 	}
 	va_end(printme);
