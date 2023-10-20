@@ -1,2 +1,4 @@
 printf readme
-bimsmariiit
+This is a team project by:
+-Codemayor
+-Bimsmart
