@@ -19,8 +19,16 @@ void print_char(va_list types, int *num)
 void print_string(va_list types, int *num)
 {
 	char *s = va_arg(types, char *);
-
-	handle_write(num, s, strlen(s));
+	int i;
+	
+	if (str == NULL)
+	{
+		str = "(nil)";
+		length = _strlen(str);
+		for (i = 0; i < length; i++)
+			handle_write(num,(str + i), 1);
+	}
+	handle_write(num, s, _strlen(s));
 }
 /**
  * print_percent - print percentage
@@ -39,8 +47,34 @@ void print_percent(int *num)
  */
 void print_int(va_list types, int *num)
 {
-	number = va_arg(types, int);
-	len = sprint(buffer, "%d", num);
-	fwrite(buffer, 1, len, stdout);
-	*num += len;
+	int number = va_arg(types, int);
+	int n, last = number % 10, digit, exp = 1;
+	int i = 1;
+
+	number = number / 10;
+	n = number;
+	if (last < 0)
+	{
+		handle_write(num, '-', 1);
+		n = -n;
+		number = -number;
+		last = -last;
+	}
+	if (n > 0)
+	{
+		while (n / 10 != 0)
+		{
+			exp = exp * 10;
+			n = n / 10;
+		}
+		n = number;
+		while (exp > 0)
+		{
+			digit = n / exp;
+			handle_write(num, digit + '0', 1);
+			n = n - (digit * exp);
+			exp = exp / 10;
+		}
+	}
+	handle_write(num, last + '0', 1);
 }

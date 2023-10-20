@@ -29,5 +29,7 @@ void print_char(va_list types, int *num);
 void print_string(va_list types, int *num);
 void print_percent(int *num);
 void print_int(va_list types, int *num);
+int _strlenc(const char *str);
+int _strlen(char *str);
 
 #endif
