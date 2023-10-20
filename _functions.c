@@ -63,7 +63,7 @@ void print_int(va_list types, int *num)
 		while (exp > 0)
 		{
 			digit = n / exp;
-			d = last + '0';
+			d = digit + '0';
 			handle_write(num, &d, 1);
 			n = n - (digit * exp);
 			exp = exp / 10;
